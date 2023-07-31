@@ -2,6 +2,8 @@
 
 Este é um projeto de um sistema de contas digitais desenvolvido utilizando o framework Spring Boot e o banco de dados PostgreSQL. O objetivo é fornecer uma solução para gerenciamento de clientes, contas e movimentações (depósitos e saques) em um banco de dados relacional.
 
+![Alt text](assets/api_image.png)
+
 ## Funcionalidades
 O sistema possui as seguintes funcionalidades:
 
@@ -18,8 +20,8 @@ O sistema possui as seguintes funcionalidades:
 - PostgreSQL: Sistema gerenciador de banco de dados relacional.
 - Hibernate: Framework de mapeamento objeto-relacional (ORM) utilizado para interagir com o banco de dados.
 - OpenAPI: Todos os endpoints da API estão documentados usando a especificação OpenAPI (anteriormente conhecida como Swagger). A documentação pode ser acessada em /swagger-ui/index.html após a execução do projeto.
-## Diagrama Entidade Relacionamento (ER)
-![Alt text](assets/image.png)
+## Diagrama Entidade Relacionamento (DER)
+![Alt text](assets/der.png)
 
 O diagrama ER representa a estrutura do banco de dados, mostrando as entidades (tabelas) e seus relacionamentos.
 
@@ -27,7 +29,7 @@ O diagrama ER representa a estrutura do banco de dados, mostrando as entidades (
 O modelo ER está representado no arquivo [modelo_entidade_relacionamento.md](docs/entity-relationship-model.md), detalhando as entidades, atributos e chaves primárias e estrangeiras.
 
 ## Scripts DDL e DML
-O Flyway é responsável por aplicar automaticamente os scripts [DDL](backend/src/main/resources/db/migration/V1__Create_schema.sql) (Data Definition Language) para criação das tabelas e [DDL](backend/src/main/resources/db/migration/V2__Populate_customer.sql) (Data Manipulation Language) para inserção de dados iniciais. Os scripts estão localizados no diretório 'src/main/resources/db/migration'. O Flyway garante que as mudanças no banco de dados são aplicadas de forma consistente e controlada.
+O Flyway é responsável por aplicar automaticamente os scripts [DDL](backend/src/main/resources/db/migration/V1__Create_schema.sql) (Data Definition Language) para criação das tabelas e [DDL](backend/src/main/resources/db/migration/V2__Populate_database.sql) (Data Manipulation Language) para inserção de dados iniciais. Os scripts estão localizados no diretório 'src/main/resources/db/migration'. O Flyway garante que as mudanças no banco de dados são aplicadas de forma consistente e controlada.
 
 ## API
 A API foi desenvolvida utilizando o Spring Boot e segue o padrão RESTful para as operações CRUD (Create, Read, Update, Delete).
@@ -57,10 +59,12 @@ cd digital-account
 # Iniciar todos os serviços
 docker compose up -d
 ```
-A execução do comando acima gerará todos os seguintes serviços:
+A execução do comando acima gerará os seguintes serviços:
 
 - **Digital Account Rest API**: API rest construida a partir de [./backend](./backend/) 
     + Pode ser acessada em http://localhost:8080
+    + Acesse a documentação da api em http://localhost:8080/swagger-ui/index.html
+    + É possível criar usuários novos ou usar os existentes, basta consultar a base de dados, a senha de todos os usuários é 123456 
     
 
 - [**Postgres**](https://www.postgresql.org): Banco de dados usado pela API

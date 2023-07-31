@@ -49,7 +49,9 @@ A entidade "Transaction" tem um relacionamento (N, 1) com a entidade "Account", 
 - O atributo "conta_id" na entidade "Transaction" é uma chave estrangeira referenciando a chave primária "id" da entidade "Account".
 
 ## Observações
-- O atributo "type" na entidade "Transaction" pode assumir os valores "DEPOSIT" ou "WITHDRAWAL" para representar o tipo de operação realizada.
+- O atributo "account_type" na entidade "Account" pode assumir os valores "SAVINGS_ACCOUNT" ou "CURRENT_ACCOUNT" para representar o tipo da conta. 
+
+- O atributo "type" na entidade "Transaction" pode assumir os valores "DEPOSIT" ou "WITHDRAL" para representar o tipo de operação realizada.
 
 - O atributo "created_at" na entidade "Transaction" representa a data em que a movimentação foi realizada.
 
